@@ -15,6 +15,9 @@ namespace Pipedrive
         [JsonProperty("org_id")]
         public long OrgId { get; set; }
 
+        [JsonProperty("label")]
+        public int? Label { get; set; }
+
         [JsonProperty("email")]
         public List<Email> Email { get; set; } = new List<Email>();
 
