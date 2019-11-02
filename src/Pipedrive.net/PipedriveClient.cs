@@ -67,6 +67,7 @@ namespace Pipedrive
             Stage = new StagesClient(apiConnection);
             User = new UsersClient(apiConnection);
             Webhook = new WebhooksClient();
+            Filter = new FiltersClient(apiConnection);
         }
 
         /// <summary>
@@ -262,6 +263,14 @@ namespace Pipedrive
         /// Refer to the API documentation for more information: https://developers.pipedrive.com/docs/api/v1/#!/Webhooks
         /// </remarks>
         public IWebhooksClient Webhook { get; private set; }
+
+        /// <summary>
+        /// Access Pipedrive's Filter API.
+        /// </summary>
+        /// <remarks>
+        /// Refer to the API documentation for more information: https://developers.pipedrive.com/docs/api/v1/#!/Filters
+        /// </remarks>
+        public IFiltersClient Filter { get; private set; }
 
         static Uri FixUpBaseUri(Uri uri)
         {

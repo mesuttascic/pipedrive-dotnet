@@ -37,6 +37,8 @@ namespace Pipedrive
 
         static readonly Uri _usersUrl = new Uri("users", UriKind.Relative);
 
+        static readonly Uri _filtersUrl = new Uri("filters", UriKind.Relative);
+
         /// <summary>
         /// Returns the <see cref="Uri"/> that returns all of the activities.
         /// </summary>
@@ -460,6 +462,24 @@ namespace Pipedrive
         public static Uri OAuthRevokeToken()
         {
             return new Uri("oauth/revoke", UriKind.Relative);
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Uri"/> that returns all of the filters in response to a GET request.
+        /// </summary>
+        /// <returns></returns>
+        public static Uri Filters()
+        {
+            return _filtersUrl;
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Uri"/> for the specified filter.
+        /// </summary>
+        /// <param name="id">The id of the filter</param>
+        public static Uri Filters(long id)
+        {
+            return new Uri($"filters/{id}", UriKind.Relative);
         }
     }
 }
