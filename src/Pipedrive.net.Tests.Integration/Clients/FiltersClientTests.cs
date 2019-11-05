@@ -15,7 +15,7 @@ namespace Pipedrive.Tests.Integration.Clients
                 var filters = pipedrive.Filter.GetAll().Result;
 
                 Assert.True(filters.Count >= 1);
-                Assert.True(filters[0].Active);
+                Assert.True(filters[0].ActiveFlag);
             }
         }
 
@@ -28,7 +28,7 @@ namespace Pipedrive.Tests.Integration.Clients
 
                 var filter = pipedrive.Filter.Get(21).Result;
 
-                Assert.True(filter.Active);
+                Assert.True(filter.ActiveFlag);
             }
         }
 

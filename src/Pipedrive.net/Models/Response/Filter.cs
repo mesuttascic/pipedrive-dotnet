@@ -20,7 +20,7 @@ namespace Pipedrive
         public string Type { get; set; }
 
         [JsonProperty("temporary_flag")]
-        public string Temporary_flag { get; set; }
+        public string TemporaryFlag { get; set; }
 
         [JsonProperty("user_id")]
         public long? UserId { get; set; }
@@ -32,10 +32,10 @@ namespace Pipedrive
         public DateTime? UpdateTime { get; set; }
 
         [JsonProperty("visible_to")]
-        public long? visible_to { get; set; }
+        public long? VisibleTo { get; set; }
 
         [JsonProperty("custom_view_id")]
-        public long? custom_view_id { get; set; }
+        public long? CustomViewId { get; set; }
 
         //[JsonProperty("conditions")]
         //public long? conditions { get; set; }
