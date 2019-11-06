@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Pipedrive.Tests.Integration.Clients
@@ -64,7 +66,7 @@ namespace Pipedrive.Tests.Integration.Clients
             }
         }
 
-        /*public class TheCreateMethod
+        public class TheCreateMethod
         {
             [IntegrationTest]
             public async Task CanCreate()
@@ -72,10 +74,12 @@ namespace Pipedrive.Tests.Integration.Clients
                 var pipedrive = Helper.GetAuthenticatedClient();
                 var fixture = pipedrive.File;
 
-                var imageUrl = @"./Content/image.jpg";
+                //var imageUrl = @"./Content/image.jpg";
+                var imageUrl = @"./Content/bla.txt";
                 FileStream reader = new FileStream(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), imageUrl), FileMode.Open);
 
                 var newFile = new NewFile(reader);
+                //newFile.DealId = 3;
 
                 var file = await fixture.Create(newFile);
                 Assert.NotNull(file);
@@ -126,10 +130,10 @@ namespace Pipedrive.Tests.Integration.Clients
 
                 await fixture.Delete(createdFile.Id);
 
-                var deletedFile =  await fixture.Get(createdFile.Id);
+                var deletedFile = await fixture.Get(createdFile.Id);
 
                 Assert.False(deletedFile.ActiveFlag);
             }
-        }*/
+        }
     }
 }

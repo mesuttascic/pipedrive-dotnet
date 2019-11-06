@@ -14,9 +14,9 @@ namespace Pipedrive
 
         Task<Filter> Get(long id);
 
-        Task<Filter> Create(NewPipeline data);
+        Task<Filter> Create(NewFilter data);
 
-        Task<Filter> Edit(long id, PipelineUpdate data);
+        Task<Filter> Edit(long id, FilterUpdate data);
 
         Task Delete(long id);
     }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Pipedrive.Helpers;
 
@@ -39,7 +40,7 @@ namespace Pipedrive
             return ApiConnection.Get<File>(ApiUrls.File(id));
         }
 
-        /*public async Task<File> Create(NewFile data)
+        public async Task<File> Create(NewFile data)
         {
             Ensure.ArgumentNotNull(data, nameof(data));
 
@@ -72,8 +73,8 @@ namespace Pipedrive
             }
             var contentString = content.ReadAsStringAsync();
 
-            return await ApiConnection.Post<File>(ApiUrls.Files(), content, "application/json", "multipart/form-data");
-        }*/
+            return await ApiConnection.Post<File>(ApiUrls.Files(), content, "text/plain", "multipart/form-data");
+        }
 
         public Task<File> Edit(long id, FileUpdate data)
         {
