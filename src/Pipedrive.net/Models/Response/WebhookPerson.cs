@@ -6,7 +6,7 @@ using Pipedrive.Internal;
 namespace Pipedrive
 {
     [JsonConverter(typeof(CustomFieldConverter))]
-    public class WebhookOrganization : IEntityWithCustomFields
+    public class WebhookPerson : IEntityWithCustomFields
     {
         public long Id { get; set; }
 
@@ -14,10 +14,19 @@ namespace Pipedrive
         public long CompanyId { get; set; }
 
         [JsonProperty("owner_id")]
-        public long? OwnerId { get; set; }
+        public long OwnerId { get; set; }
+
+        [JsonProperty("org_id")]
+        public long? OrgId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
 
         [JsonProperty("open_deals_count")]
         public int OpenDealsCount { get; set; }
@@ -31,11 +40,14 @@ namespace Pipedrive
         [JsonProperty("related_closed_deals_count")]
         public int RelatedClosedDealsCount { get; set; }
 
+        [JsonProperty("participant_open_deals_count")]
+        public int ParticipantOpenDealsCount { get; set; }
+
+        [JsonProperty("participant_closed_deals_count")]
+        public int ParticipantClosedDealsCount { get; set; }
+
         [JsonProperty("email_messages_count")]
         public int EmailMessagesCount { get; set; }
-
-        [JsonProperty("people_count")]
-        public int PeopleCount { get; set; }
 
         [JsonProperty("activities_count")]
         public int ActivitiesCount { get; set; }
@@ -73,14 +85,11 @@ namespace Pipedrive
         [JsonProperty("active_flag")]
         public bool ActiveFlag { get; set; }
 
-        [JsonProperty("category_id")]
-        public long? CategoryId { get; set; }
+        [JsonProperty("phone")]
+        public List<Phone> Phone { get; set; }
 
-        [JsonProperty("picture_id")]
-        public Picture PictureId { get; set; }
-
-        [JsonProperty("country_code")]
-        public string CountryCode { get; set; }
+        [JsonProperty("email")]
+        public List<Email> Email { get; set; }
 
         [JsonProperty("first_char")]
         public char FirstChar { get; set; }
@@ -93,6 +102,9 @@ namespace Pipedrive
 
         [JsonProperty("visible_to")]
         public Visibility VisibleTo { get; set; }
+
+        [JsonProperty("picture_id")]
+        public long? PictureId { get; set; }
 
         [JsonProperty("next_activity_date")]
         public string NextActivityDate { get; set; }
@@ -115,41 +127,17 @@ namespace Pipedrive
         [JsonProperty("timeline_last_activity_time_by_owner")]
         public string TimelineLastActivityTimeByOwner { get; set; }
 
+        [JsonProperty("last_incoming_mail_time")]
+        public DateTime? LastIncomingMailTime { get; set; }
+
+        [JsonProperty("last_outgoing_mail_time")]
+        public DateTime? LastOutgoingMailTime { get; set; }
+
         [JsonProperty("label")]
         public long? Label { get; set; }
 
-        [JsonProperty("address")]
-        public string Address { get; set; }
-
-        [JsonProperty("address_subpremise")]
-        public string AddressSubpremise { get; set; }
-
-        [JsonProperty("address_street_number")]
-        public string AddressStreetNumber { get; set; }
-
-        [JsonProperty("address_route")]
-        public string AddressRoute { get; set; }
-
-        [JsonProperty("address_sublocality")]
-        public string AddressSublocality { get; set; }
-
-        [JsonProperty("address_locality")]
-        public string AddressLocality { get; set; }
-
-        [JsonProperty("address_admin_area_level_1")]
-        public string AddressAdminAreaLevel1 { get; set; }
-
-        [JsonProperty("address_admin_area_level_2")]
-        public string AddressAdminAreaLevel2 { get; set; }
-
-        [JsonProperty("address_country")]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("address_postal_code")]
-        public string AddressPostalCode { get; set; }
-
-        [JsonProperty("address_formatted_address")]
-        public string AddressFormattedAddress { get; set; }
+        [JsonProperty("org_name")]
+        public string OrgName { get; set; }
 
         [JsonProperty("owner_name")]
         public string OwnerName { get; set; }
@@ -160,11 +148,14 @@ namespace Pipedrive
         [JsonIgnore]
         public IDictionary<string, ICustomField> CustomFields { get; set; }
 
-        public OrganizationUpdate ToUpdate()
+        public PersonUpdate ToUpdate()
         {
-            return new OrganizationUpdate
+            return new PersonUpdate
             {
                 Name = Name,
+                Email = Email,
+                Phone = Phone,
+                OrgId = OrgId,
                 OwnerId = OwnerId,
                 VisibleTo = VisibleTo,
                 CustomFields = CustomFields
