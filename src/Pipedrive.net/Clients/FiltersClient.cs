@@ -29,7 +29,7 @@ namespace Pipedrive
             return ApiConnection.Get<Filter>(ApiUrls.Filters(id));
         }
 
-        public Task<Filter> Create(NewPipeline data)
+        public Task<Filter> Create(NewFilter data)
         {
             throw new System.NotImplementedException();
         }
@@ -39,7 +39,7 @@ namespace Pipedrive
             throw new System.NotImplementedException();
         }
 
-        public Task<Filter> Edit(long id, PipelineUpdate data)
+        public Task<Filter> Edit(long id, FilterUpdate data)
         {
             throw new System.NotImplementedException();
         }
