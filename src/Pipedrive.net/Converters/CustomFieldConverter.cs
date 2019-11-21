@@ -109,7 +109,17 @@ namespace Pipedrive.Internal
 
                             break;
                         case JTokenType.Integer:
-                            customFields.Add(property.Name, new IntCustomField((int)property.Value));
+                            // Monetary
+                            if (linkedProperties.Any(p => p.Key == $"{property.Name}_currency"))
+                            {
+                                customFields.Add(property.Name, new MonetaryCustomField((decimal)property.Value, (string)linkedProperties[$"{property.Name}_currency"]));
+                            }
+
+                            // Integer
+                            else
+                            {
+                                customFields.Add(property.Name, new IntCustomField((int)property.Value));
+                            }
                             break;
                         case JTokenType.Object:
                             // User
