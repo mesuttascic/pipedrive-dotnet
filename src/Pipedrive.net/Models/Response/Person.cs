@@ -29,9 +29,6 @@ namespace Pipedrive
         [JsonProperty("last_name")]
         public string LastName { get; set; }
 
-        [JsonProperty("label")]
-        public int? Label { get; set; }
-
         [JsonProperty("open_deals_count")]
         public int OpenDealsCount { get; set; }
 
