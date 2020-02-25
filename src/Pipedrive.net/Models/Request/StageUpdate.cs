@@ -18,5 +18,8 @@ namespace Pipedrive
 
         [JsonProperty("rotten_days")]
         public int? RottenDays { get; set; }
+
+        [JsonProperty("order_nr")]
+        public int? OrderNr { get; set; }
     }
 }
